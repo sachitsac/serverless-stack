@@ -1,3 +1,5 @@
-exports.handler = async (event: unknown) => {
-  return "hello world";
-};
+export async function main(event: unknown): Promise<string> {
+  console.log("event 👉", event);
+
+  return "Hello world";
+}
