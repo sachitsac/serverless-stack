@@ -5,11 +5,14 @@
     "cdk_app": "bin/cdk_app.js"
   },
   "scripts": {
-    "build": "tsc",
-    "watch": "tsc -w",
+    "build:ts": "tsc",
+    "watch:ts": "tsc -w",
     "test": "jest",
     "cdk": "cdk",
-    "codegen": "graphql-codegen"
+    "codegen": "graphql-codegen",
+    "cleanup": "rm -rf cdk.out",
+    "build": "cdk synth",
+    "deploy": "npm run cleanup && npm run build && cdk deploy"
   },
   "devDependencies": {
     "@aws-cdk/assert": "1.121.0",

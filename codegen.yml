@@ -11,14 +11,6 @@ config:
     AWSURL: "string"
     AWSPhone: "string"
     AWSIPAddress: "string"
-    DateTime: "number"
-    Email: "string"
-    JWT: "string"
-    MobileNumber: "string"
-    RGB: "string"
-    TimeZone: "string"
-    URI: "string"
-    UUID: "string"
 
 generates:
   ./functions/chats.ts:

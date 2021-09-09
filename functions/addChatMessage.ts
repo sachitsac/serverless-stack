@@ -10,7 +10,7 @@ export const addChatMessage = async (
     id: uuid(),
     message: event.arguments.input.message,
     username: event.arguments.input.username,
-    createdAt: new Date().getTime(),
+    createdAt: new Date().toISOString(),
   };
 
   try {

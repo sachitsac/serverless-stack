@@ -1,17 +1,18 @@
-scalar DateTime
-scalar Email
-scalar JWT
-scalar MobileNumber
-scalar RGB
-scalar TimeZone
-scalar URI
-scalar UUID
+scalar AWSJSON
+scalar AWSDate
+scalar AWSTime
+scalar AWSDateTime
+scalar AWSTimestamp
+scalar AWSEmail
+scalar AWSURL
+scalar AWSPhone
+scalar AWSIPAddress
 
 type Chat {
   id: String
   message: String!
   username: String!
-  createdAt: DateTime!
+  createdAt: AWSDateTime!
 }
 
 input ChatInput {
