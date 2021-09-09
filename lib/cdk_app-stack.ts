@@ -8,32 +8,41 @@ export class CdkAppStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props);
 
+    const chatTable = dynamodb(this, "chats");
     const api = graphqlApi(this);
+
     const addChatMessageResolver = lambda(
       this,
       "addChatMessage",
       "functions/addChatMessage.ts"
     );
-
-    const chatTable = dynamodb(this, "chats");
-
-    chatTable.grantFullAccess(addChatMessageResolver);
+    addChatMessageResolver.addEnvironment("CHAT_TABLE", chatTable.tableName);
+    chatTable.grantWriteData(addChatMessageResolver);
 
     // Set the new Lambda function as a data source for the AppSync API
-    const lambdaDs = api.addLambdaDataSource(
-      "lambdaDatasource",
+    const addChatMessageDs = api.addLambdaDataSource(
+      "addChatMessageResolver",
       addChatMessageResolver
     );
-    addChatMessageResolver.addEnvironment("CHAT_TABLE", chatTable.tableName);
 
-    lambdaDs.createResolver({
-      typeName: "Query",
-      fieldName: "greet",
-    });
-
-    lambdaDs.createResolver({
+    addChatMessageDs.createResolver({
       typeName: "Mutation",
       fieldName: "addChatMessage",
+    });
+
+    const readChatsResolver = lambda(this, "messages", "functions/messages.ts");
+    readChatsResolver.addEnvironment("CHAT_TABLE", chatTable.tableName);
+    chatTable.grantReadData(readChatsResolver);
+
+    // Set the new Lambda function as a data source for the AppSync API
+    const messageDs = api.addLambdaDataSource(
+      "readChatsResolver",
+      readChatsResolver
+    );
+
+    messageDs.createResolver({
+      typeName: "Query",
+      fieldName: "messages",
     });
 
     cfnLog(this, "GraphqlApiUrl", api.graphqlUrl);

@@ -21,7 +21,6 @@ input ChatInput {
 }
 
 type Query {
-  greet: String!
   messages: [Chat!]
 }
 
