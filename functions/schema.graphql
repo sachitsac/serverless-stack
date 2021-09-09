@@ -27,3 +27,7 @@ type Query {
 type Mutation {
   addChatMessage(input: ChatInput!): Chat
 }
+
+type Subscription {
+  onCreateChat: Chat @aws_subscribe(mutations: ["addChatMessage"])
+}
