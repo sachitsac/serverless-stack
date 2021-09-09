@@ -1,0 +1,29 @@
+scalar DateTime
+scalar Email
+scalar JWT
+scalar MobileNumber
+scalar RGB
+scalar TimeZone
+scalar URI
+scalar UUID
+
+type Chat {
+  id: String
+  message: String!
+  username: String!
+  createdAt: DateTime!
+}
+
+input ChatInput {
+  message: String!
+  username: String!
+}
+
+type Query {
+  greet: String!
+  messages: [Chat!]
+}
+
+type Mutation {
+  addChatMessage(input: ChatInput!): Chat
+}

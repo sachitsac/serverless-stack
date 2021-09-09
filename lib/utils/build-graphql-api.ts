@@ -5,4 +5,4 @@ export const buildGraphqlApi = (
   scope: Stack,
   id: string,
   props: GraphqlApiProps
-) => new GraphqlApi(scope, id, { ...props });
+): GraphqlApi => new GraphqlApi(scope, id, { ...props });
