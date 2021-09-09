@@ -1,20 +1,42 @@
-# Welcome to your CDK TypeScript project!
+# Serverless Stack
 
-This is a blank project for TypeScript development with CDK.
+THe main goal of this project is to enable modular domain bounded services using
+aws serverless stack.
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+# Prerequisite
+
+- AWS cli installed
+- AWS account configured locally
 
 ## Useful commands
 
-- `npm run build` compile typescript to js
-- `npm run watch` watch for changes and compile
-- `npm run test` perform the jest unit tests
-- `cdk deploy` deploy this stack to your default AWS account/region
-- `cdk diff` compare deployed stack with current state
-- `cdk synth` emits the synthesized CloudFormation template
+```
+# if you modify the schema, run this command to generate types
+npm run codegen
 
-## Steps
+# To test if the stack is ok, run this command
+npx cdk synth
 
-### DB setup
+# To deploy this stack
+npm run deploy
 
-- `npm i @aws-cdk/aws-dynamodb -D`
+```
+
+## Goals
+
+- Build small domain specific graphql microservices
+- Each service can register their stack with the main stack
+- Services will only be able to extend the stack and not modify it
+- Each service will as a minimum have the following:
+  - Graphql Api
+  - Data source ( dynamodb or aurora )
+  - Lambda resolver ( nodejs lambda resolver )
+
+## Todos
+
+[ ] Github action to build and deploy the stack in different environments
+[ ] Refactor the code into modules / services
+[ ] Create an interface for the services
+[ ] Use dependency injection to register services so the main stack can deploy them
+
+... more to come
