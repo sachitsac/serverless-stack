@@ -34,9 +34,9 @@ npm run deploy
 
 ## Todos
 
-[ ] Github action to build and deploy the stack in different environments
-[ ] Refactor the code into modules / services
-[ ] Create an interface for the services
-[ ] Use dependency injection to register services so the main stack can deploy them
+- [ ] Github action to build and deploy the stack in different environments
+- [ ] Refactor the code into modules / services
+- [ ]Create an interface for the services
+- [ ] Use dependency injection to register services so the main stack can deploy them
 
 ... more to come
