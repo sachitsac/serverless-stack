@@ -6,7 +6,9 @@ import { join } from "path";
 export const graphqlApi = (scope: Stack) => {
   return buildGraphqlApi(scope, "Api", {
     name: "GraphqlApi",
-    schema: Schema.fromAsset(join(__dirname, "../../functions/schema.graphql")),
+    schema: Schema.fromAsset(
+      join(__dirname, "../../plugins/chats/graphql/schema.graphql")
+    ),
     authorizationConfig: {
       defaultAuthorization: {
         authorizationType: AuthorizationType.API_KEY,

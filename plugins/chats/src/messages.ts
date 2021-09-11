@@ -1,7 +1,7 @@
-import { Query } from "./chats";
-import { db } from "./db";
+import { Query } from './types/chats';
+import { db } from '@serverless-stack/shared';
 
-export const messages = async (): Promise<Query["messages"]> => {
+export const messages = async (): Promise<Query['messages']> => {
   const data = await db
     .scan({
       TableName: process.env.CHAT_TABLE!,
@@ -9,7 +9,7 @@ export const messages = async (): Promise<Query["messages"]> => {
     .promise();
 
   return data.Items?.map((item) => ({
-    __typename: "Chat",
+    __typename: 'Chat',
     id: item.id,
     message: item.message,
     createdAt: item.createdAt,

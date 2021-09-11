@@ -1,0 +1,59 @@
+{
+  "name": "@serverless-stack/chats",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "devDependencies": {
+    "@graphql-codegen/cli": "^2.2.0",
+    "@graphql-codegen/typescript": "^2.2.1",
+    "@graphql-codegen/typescript-resolvers": "^2.2.0",
+    "@mscharley/eslint-config": "^1.6.0",
+    "@mscharley/prettier-config": "^1.1.1",
+    "@types/aws-lambda": "^8.10.83",
+    "@types/jest": "^27.0.1",
+    "@types/node": "^16.9.1",
+    "@types/uuid": "^8.3.1",
+    "@typescript-eslint/eslint-plugin": "^4.31.0",
+    "@typescript-eslint/parser": "^4.31.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.1",
+    "jest": "^27.1.1",
+    "nodemon": "^2.0.12",
+    "prettier": "^2.4.0",
+    "rimraf": "^3.0.2",
+    "standard-version": "^9.3.1",
+    "ts-jest": "^27.0.5",
+    "ts-node": "^10.2.1"
+  },
+  "dependencies": {
+    "aws-lambda": "^1.0.6",
+    "graphql": "^15.5.3",
+    "typescript": "^4.4.3",
+    "uuid": "^8.3.2"
+  },
+  "scripts": {
+    "codegen": "graphql-codegen",
+    "clean": "rimraf dist",
+    "build": "npm run clean && tsc",
+    "start": "tsc & node .",
+    "start:dev": "nodemon",
+    "serve": "node dist/index.js",
+    "lint": "eslint . --ext ts",
+    "lint:fix": "eslint . --fix --ext ts",
+    "test": "jest",
+    "test:watch": "jest --watchAll",
+    "test:related": "jest --watchAll=false --findRelatedTests",
+    "prettier-format:default": "prettier --config .prettierrc 'src/**/*.ts' --write"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sachitsac/serverless-stack.git"
+  },
+  "author": "Sachit",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sachitsac/serverless-stack/issues"
+  },
+  "homepage": "https://github.com/sachitsac/serverless-stack#readme"
+}

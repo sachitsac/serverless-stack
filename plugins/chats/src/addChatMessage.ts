@@ -1,10 +1,10 @@
-import { AppSyncResolverEvent } from "aws-lambda";
-import { MutationAddChatMessageArgs, Chat } from "./chats";
-import { v4 as uuid } from "uuid";
-import { db } from "./db";
+import { AppSyncResolverEvent } from 'aws-lambda';
+import { MutationAddChatMessageArgs, Chat } from './types/chats';
+import { v4 as uuid } from 'uuid';
+import { db } from '@serverless-stack/shared';
 
 export const addChatMessage = async (
-  event: AppSyncResolverEvent<MutationAddChatMessageArgs>
+  event: AppSyncResolverEvent<MutationAddChatMessageArgs>,
 ): Promise<Chat> => {
   const chat: Chat = {
     id: uuid(),

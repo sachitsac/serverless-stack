@@ -14,7 +14,7 @@ export class CdkAppStack extends Stack {
     const addChatMessageResolver = lambda(
       this,
       "addChatMessage",
-      "functions/addChatMessage.ts"
+      "../plugins/chats/src/addChatMessage.ts"
     );
     addChatMessageResolver.addEnvironment("CHAT_TABLE", chatTable.tableName);
     chatTable.grantWriteData(addChatMessageResolver);
@@ -30,7 +30,11 @@ export class CdkAppStack extends Stack {
       fieldName: "addChatMessage",
     });
 
-    const readChatsResolver = lambda(this, "messages", "functions/messages.ts");
+    const readChatsResolver = lambda(
+      this,
+      "messages",
+      "../plugins/chats/src/messages.ts"
+    );
     readChatsResolver.addEnvironment("CHAT_TABLE", chatTable.tableName);
     chatTable.grantReadData(readChatsResolver);
 
