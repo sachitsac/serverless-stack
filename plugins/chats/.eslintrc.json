@@ -1,0 +1,14 @@
+{
+  "env": {
+    "node": true,
+    "es2020": true
+  },
+  "extends": ["@mscharley"],
+  "parserOptions": {
+    "ecmaVersion": 11
+  },
+  "rules": {
+    "sort-imports": "off",
+    "@typescript-eslint/no-type-alias": "off"
+  }
+}

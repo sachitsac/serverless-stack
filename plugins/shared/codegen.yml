@@ -1,0 +1,19 @@
+overwrite: true
+
+config:
+  scalars:
+    AWSJSON: 'string'
+    AWSDate: 'string'
+    AWSTime: 'string'
+    AWSDateTime: 'string'
+    AWSTimestamp: 'number'
+    AWSEmail: 'string'
+    AWSURL: 'string'
+    AWSPhone: 'string'
+    AWSIPAddress: 'string'
+
+generates:
+  ./src/types/chats.ts:
+    schema: ./graphql/schema.graphql
+    plugins:
+      - typescript
