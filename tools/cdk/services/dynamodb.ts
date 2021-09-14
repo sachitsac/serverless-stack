@@ -1,4 +1,4 @@
-import { buildDynamodb } from "./../utils/build-dynamodb";
+import { buildDynamodb } from "../utils/build-dynamodb";
 import { Stack } from "@aws-cdk/core";
 import { AttributeType, BillingMode } from "@aws-cdk/aws-dynamodb";
 
