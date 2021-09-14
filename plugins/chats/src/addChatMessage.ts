@@ -16,7 +16,7 @@ export const addChatMessage = async (
   try {
     await db
       .put({
-        TableName: process.env.CHAT_TABLE!,
+        TableName: process.env.TABLE_NAME!,
         Item: chat,
       })
       .promise();
